@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QR Code Generator</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='styles.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>QR Code Generator</h1>
+            <form id="qr-form">
+                <div class="form-group">
+                    <label for="url">URL:</label>
+                    <input type="text" id="url" name="url" required />
+                </div>
+                <div class="form-group form-size">
+                    <label for="box_size">Box Size:</label>
+                    <input
+                        type="number"
+                        id="box_size"
+                        name="box_size"
+                        value="10"
+                    />
+                </div>
+                <div class="form-group form-size">
+                    <label for="border_size">Border Size:</label>
+                    <input
+                        type="number"
+                        id="border_size"
+                        name="border_size"
+                        value="1"
+                    />
+                </div>
+                <div class="form-group form-color">
+                    <label for="foreground_color">Foreground Color:</label>
+                    <input
+                        type="color"
+                        id="foreground_color"
+                        name="foreground_color"
+                        value="#ffffff"
+                    />
+                </div>
+                <div class="form-group form-color">
+                    <label for="background_color">Background Color:</label>
+                    <input
+                        type="color"
+                        id="background_color"
+                        name="background_color"
+                        value="#000000"
+                    />
+                </div>
+                <div class="form-group">
+                    <button id="generate-btn" type="submit">
+                        Generate QR Code
+                    </button>
+                </div>
+            </form>
+            <div class="loader-div">
+                <div id="loader" ></div>
+            </div>
+            
+            <div id="qr-code-container"></div>
+            <div id="error-message" style="display: none"></div>
+            <button
+                id="download-btn"
+                style="display: none"
+                onclick="downloadQRCode()"
+            >
+                Download QR Code
+            </button>
+        </div>
+
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    </body>
+</html>
